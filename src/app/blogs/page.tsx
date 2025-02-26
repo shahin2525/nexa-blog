@@ -1,11 +1,15 @@
+"use client";
 import BlogCard from "@/components/ui/BlogCard";
+import { useGetAllBlogsQuery } from "@/redux/apis/blog.api";
 import { Blog } from "@/types";
 
-const AllBlogs = async () => {
-  const res = await fetch("http://localhost:5000/blogs", {
-    cache: "no-store",
-  });
-  const blogs = await res.json();
+const AllBlogs = () => {
+  // const res = await fetch("http://localhost:5000/blogs", {
+  //   cache: "no-store",
+  // });
+  // const blogs = await res.json();
+  const { data: blogs, isError } = useGetAllBlogsQuery(undefined);
+  console.log(blogs);
 
   return (
     <div>
