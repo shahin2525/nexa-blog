@@ -3,14 +3,14 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Define a service using a base URL and expected endpoints
 export const blogApi = createApi({
   reducerPath: "blogApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://pokeapi.co/api/v2/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000" }),
   endpoints: (build) => ({
-    getPokemonByName: build.query<Pokemon, string>({
-      query: (name) => `pokemon/${name}`,
+    getAllBlogs: build.query({
+      query: () => "/blogs",
     }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetPokemonByNameQuery } = pokemonApi;
+export const { useGetAllBlogsQuery } = blogApi;
